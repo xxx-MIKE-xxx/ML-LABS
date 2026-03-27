@@ -1,0 +1,5 @@
+name: balanced
+lambda: 1.0
+continue_threshold: 0.0
+friction_cost: 2.0
+classification_continue_threshold: 0.50

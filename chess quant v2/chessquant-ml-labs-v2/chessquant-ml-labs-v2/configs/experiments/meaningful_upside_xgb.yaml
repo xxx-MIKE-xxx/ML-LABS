@@ -1,0 +1,35 @@
+experiment_name: meaningful_upside_xgb
+mlflow:
+  tracking_uri: http://127.0.0.1:5000
+  experiment_name: chessquant-lab
+paths:
+  features_parquet: data/processed/train_features.parquet
+  output_root: outputs/models
+schema:
+  group_col: session_id
+  order_col: games_played
+  cum_pl_col: session_pl
+  time_col: created_at
+  keep_numeric_only: true
+  drop_cols:
+    - game_id
+objective:
+  kind: meaningful_upside_binary
+  min_gain_elo: 8.0
+model:
+  kind: xgb_classifier
+  params:
+    n_estimators: 250
+    max_depth: 4
+    learning_rate: 0.05
+    subsample: 0.9
+    colsample_bytree: 0.9
+    reg_lambda: 1.0
+    random_state: 42
+    eval_metric: logloss
+split:
+  kind: chronological_group
+  n_splits: 5
+  group_gap: 0
+tracking:
+  register_latest_symlink: true

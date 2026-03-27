@@ -1,0 +1,5 @@
+name: aggressive
+lambda: 0.5
+continue_threshold: 0.0
+friction_cost: 1.0
+classification_continue_threshold: 0.42

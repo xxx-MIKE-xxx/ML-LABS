@@ -1,0 +1,5 @@
+name: conservative
+lambda: 2.0
+continue_threshold: 0.0
+friction_cost: 3.0
+classification_continue_threshold: 0.60

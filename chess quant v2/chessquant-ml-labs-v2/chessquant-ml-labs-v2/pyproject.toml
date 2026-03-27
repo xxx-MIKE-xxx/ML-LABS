@@ -3,7 +3,7 @@ name = "chessquant-ml-labs-v2"
 version = "0.1.0"
 description = "Local ML lab for retraining the ChessQuant tilt detector"
 authors = ["John Scott <chatgpt4.mm.acc.2@gmail.com>"]
-packages = [{ include = "chessquant_ml" }]
+packages = [{ include = "chessquant_ml", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -26,9 +26,11 @@ python-dotenv = "^1.0.1"
 matplotlib = "^3.9.0"
 mlflow = "^2.17.0"
 wandb = "^0.18.0"
-typer = { version = "^0.12.5", extras = ["all"] }
+typer = "0.15.3"
 joblib = "^1.4.2"
 tqdm = "^4.67.3"
+click = "8.1.7"
+pyyaml = "^6.0.3"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.7"
