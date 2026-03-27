@@ -6,33 +6,12 @@ import joblib
 import numpy as np
 import onnxruntime as ort
 import polars as pl
-import copy
-
-from xgboost import XGBClassifier
-from skl2onnx import convert_sklearn, update_registered_converter
+from skl2onnx import convert_sklearn
 from skl2onnx.common.data_types import FloatTensorType
-from skl2onnx.common.shape_calculator import calculate_linear_classifier_output_shapes
-from onnxmltools.convert.xgboost.operator_converters.XGBoost import convert_xgboost
+from xgboost import XGBClassifier
+
 from chessquant_ml.settings import settings
 from chessquant_ml.utils.io import write_json
-
-
-_XGB_CONVERTER_REGISTERED = False
-
-
-def _register_xgb_converter() -> None:
-    global _XGB_CONVERTER_REGISTERED
-    if _XGB_CONVERTER_REGISTERED:
-        return
-
-    update_registered_converter(
-        XGBClassifier,
-        "XGBoostXGBClassifier",
-        calculate_linear_classifier_output_shapes,
-        convert_xgboost,
-        options={"nocl": [True, False], "zipmap": [True, False, "columns"]},
-    )
-    _XGB_CONVERTER_REGISTERED = True
 
 
 def export_to_onnx(model_path: Path, config_path: Path, feature_path: Path) -> Path:
@@ -56,12 +35,7 @@ def export_to_onnx(model_path: Path, config_path: Path, feature_path: Path) -> P
 
     print("Converting model to ONNX ...")
     initial_types = [("float_input", FloatTensorType([None, len(features)]))]
-    _register_xgb_converter()
-    onnx_model = convert_sklearn(
-        model,
-        initial_types=initial_types,
-        target_opset={"": 15, "ai.onnx.ml": 2},
-    )
+    onnx_model = convert_sklearn(model, initial_types=initial_types, target_opset=15)
 
     out_path = settings.models_dir / "tilt_xgb.onnx"
     out_path.parent.mkdir(parents=True, exist_ok=True)

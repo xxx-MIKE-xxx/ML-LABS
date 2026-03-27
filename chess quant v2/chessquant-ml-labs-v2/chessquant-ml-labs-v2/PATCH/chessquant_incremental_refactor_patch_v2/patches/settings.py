@@ -7,10 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
-    mlflow_tracking_uri: str | None = None
-    mlflow_experiment_name: str = "chessquant-lab"
-    wandb_project: str | None = None
-    wandb_entity: str | None = None
+
     lichess_username: str = Field(default="Matumnich", alias="LICHESS_USERNAME")
     lichess_token: str | None = Field(default=None, alias="LICHESS_TOKEN")
     stockfish_path: str | None = Field(default=None, alias="STOCKFISH_PATH")

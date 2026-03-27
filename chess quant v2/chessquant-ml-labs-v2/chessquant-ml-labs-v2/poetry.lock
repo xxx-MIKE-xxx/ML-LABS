@@ -1842,6 +1842,24 @@ typing_extensions = ">=4.7.1"
 reference = ["Pillow"]
 
 [[package]]
+name = "onnxmltools"
+version = "1.16.0"
+description = "Converts Machine Learning models to ONNX"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "onnxmltools-1.16.0-py3-none-any.whl", hash = "sha256:7b27196e7dcc0d9de29110f211e7941ad1c71dd97606baa729144d9acd105d3c"},
+    {file = "onnxmltools-1.16.0.tar.gz", hash = "sha256:cd76e0a7ba6a3c4ca4acf3b4c7973cda6a70f2edc146ab11d4efc3dfbee6805a"},
+]
+
+[package.dependencies]
+numpy = "*"
+onnx = ">=1.8.1"
+protobuf = "*"
+skl2onnx = ">=1.4.9"
+
+[[package]]
 name = "onnxruntime"
 version = "1.24.4"
 description = "ONNX Runtime is a runtime accelerator for Machine Learning models"
@@ -3793,4 +3811,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "a67a603b1044c30a40b5480cc5b579c449f9bf26c8913cf83fb7feae290f5e1b"
+content-hash = "1281147098a970ea60e81f1110cfa28cd47394563952cd5574737bc947e1a6af"
