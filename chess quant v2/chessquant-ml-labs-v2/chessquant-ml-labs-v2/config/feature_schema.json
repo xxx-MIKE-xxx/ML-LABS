@@ -1,0 +1,29 @@
+{
+  "core_features": [
+    "my_acpl",
+    "my_blunder_count",
+    "my_avg_secs_per_move",
+    "result",
+    "games_played",
+    "speed_vs_start",
+    "session_pl",
+    "loss_streak",
+    "roll_5_acpl_mean",
+    "roll_5_time_per_move",
+    "log_break_time",
+    "tod_morning",
+    "tod_midday",
+    "tod_evening",
+    "tod_night"
+  ],
+  "optional_eval_features": [
+    "my_mistake_count",
+    "my_inaccuracy_count",
+    "largest_eval_drop_cp",
+    "avg_eval_drop_cp",
+    "eval_volatility",
+    "threw_winning_position"
+  ],
+  "target": "target",
+  "group_col": "session_id"
+}
