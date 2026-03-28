@@ -1,0 +1,58 @@
+{
+  "run_dir": "outputs\\models\\20260327_201012_meaningful_upside_xgb",
+  "model_path": "outputs\\models\\20260327_201012_meaningful_upside_xgb\\model.joblib",
+  "features_path": "data/features/Matumnich_features.parquet",
+  "feature_order": [
+    "my_acpl",
+    "my_blunder_count",
+    "my_mistake_count",
+    "my_inaccuracy_count",
+    "largest_eval_drop_cp",
+    "avg_eval_drop_cp",
+    "eval_volatility",
+    "threw_winning_position",
+    "rating_diff",
+    "result",
+    "my_avg_secs_per_move",
+    "time_gap_ms",
+    "games_played",
+    "session_pl",
+    "first_speed",
+    "is_loss",
+    "speed_vs_start",
+    "prev_game_end_ms",
+    "break_time_sec",
+    "loss_streak",
+    "roll_5_acpl_mean",
+    "roll_5_time_per_move",
+    "log_break_time",
+    "tod_morning",
+    "tod_midday",
+    "tod_evening",
+    "tod_night"
+  ],
+  "task_type": "classification",
+  "target_col": "target__meaningful_upside_binary",
+  "objective": {
+    "kind": "meaningful_upside_binary",
+    "min_gain_elo": 8.0
+  },
+  "schema": {
+    "group_col": "session_id",
+    "order_col": "created_at_ms",
+    "time_col": "created_at_ms",
+    "cum_pl_col": "session_pl",
+    "keep_numeric_only": true,
+    "drop_cols": [
+      "game_id",
+      "user_color",
+      "session_id",
+      "created_at_ms",
+      "last_move_at_ms",
+      "is_max",
+      "first_max_game",
+      "session_max",
+      "target"
+    ]
+  }
+}

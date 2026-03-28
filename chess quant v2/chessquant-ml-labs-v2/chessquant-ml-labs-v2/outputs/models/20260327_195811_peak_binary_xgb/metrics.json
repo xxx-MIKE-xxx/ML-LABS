@@ -1,0 +1,85 @@
+{
+  "experiment_name": "peak_binary_xgb",
+  "task_type": "classification",
+  "target_col": "target__peak_binary",
+  "n_rows": 200,
+  "n_features": 28,
+  "feature_cols": [
+    "my_acpl",
+    "my_blunder_count",
+    "my_mistake_count",
+    "my_inaccuracy_count",
+    "largest_eval_drop_cp",
+    "avg_eval_drop_cp",
+    "eval_volatility",
+    "threw_winning_position",
+    "rating_diff",
+    "result",
+    "my_avg_secs_per_move",
+    "time_gap_ms",
+    "games_played",
+    "session_pl",
+    "first_speed",
+    "is_loss",
+    "speed_vs_start",
+    "prev_game_end_ms",
+    "break_time_sec",
+    "loss_streak",
+    "roll_5_acpl_mean",
+    "roll_5_time_per_move",
+    "log_break_time",
+    "tod_morning",
+    "tod_midday",
+    "tod_evening",
+    "tod_night",
+    "session_max"
+  ],
+  "fold_metrics": [
+    {
+      "f1": 0.6666666666666666,
+      "roc_auc": 0.7857142857142857,
+      "pr_auc": 0.8163265306122449,
+      "fold": 1.0
+    },
+    {
+      "f1": 0.42857142857142855,
+      "roc_auc": 0.6691729323308271,
+      "pr_auc": 0.38117913832199546,
+      "fold": 2.0
+    },
+    {
+      "f1": 0.36363636363636365,
+      "roc_auc": 0.8294930875576036,
+      "pr_auc": 0.5958848655741367,
+      "fold": 3.0
+    },
+    {
+      "f1": 0.5,
+      "roc_auc": 0.868131868131868,
+      "pr_auc": 0.6990009990009989,
+      "fold": 4.0
+    },
+    {
+      "f1": 0.5,
+      "roc_auc": 0.8525345622119815,
+      "pr_auc": 0.71019721019721,
+      "fold": 5.0
+    }
+  ],
+  "first_leakage_report": {
+    "train_rows": 19,
+    "valid_rows": 13,
+    "train_groups": 5,
+    "valid_groups": 7,
+    "group_overlap_count": 0,
+    "group_overlap_examples": [],
+    "max_train_time": "1970-01-01 00:29:33.043403446+00:00",
+    "min_valid_time": "1970-01-01 00:29:33.058789958+00:00"
+  },
+  "mean_f1": 0.49177489177489175,
+  "std_f1": 0.10113021100526255,
+  "mean_roc_auc": 0.8010093471893132,
+  "std_roc_auc": 0.07153514276835943,
+  "mean_pr_auc": 0.6405177487413172,
+  "std_pr_auc": 0.1472636104451464
+}

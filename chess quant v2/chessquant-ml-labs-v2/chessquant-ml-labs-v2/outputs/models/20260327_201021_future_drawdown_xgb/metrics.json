@@ -1,0 +1,84 @@
+{
+  "experiment_name": "future_drawdown_xgb",
+  "task_type": "regression",
+  "target_col": "target__future_drawdown_regression",
+  "n_rows": 200,
+  "n_features": 27,
+  "feature_cols": [
+    "my_acpl",
+    "my_blunder_count",
+    "my_mistake_count",
+    "my_inaccuracy_count",
+    "largest_eval_drop_cp",
+    "avg_eval_drop_cp",
+    "eval_volatility",
+    "threw_winning_position",
+    "rating_diff",
+    "result",
+    "my_avg_secs_per_move",
+    "time_gap_ms",
+    "games_played",
+    "session_pl",
+    "first_speed",
+    "is_loss",
+    "speed_vs_start",
+    "prev_game_end_ms",
+    "break_time_sec",
+    "loss_streak",
+    "roll_5_acpl_mean",
+    "roll_5_time_per_move",
+    "log_break_time",
+    "tod_morning",
+    "tod_midday",
+    "tod_evening",
+    "tod_night"
+  ],
+  "fold_metrics": [
+    {
+      "mae": 5.19084985439594,
+      "rmse": 6.073940213761405,
+      "r2": -1.595701374995338,
+      "fold": 1.0
+    },
+    {
+      "mae": 3.9282332979715786,
+      "rmse": 4.738805761820012,
+      "r2": -1.3539223620131455,
+      "fold": 2.0
+    },
+    {
+      "mae": 5.01833048419676,
+      "rmse": 6.233142551583665,
+      "r2": -0.518052413225079,
+      "fold": 3.0
+    },
+    {
+      "mae": 4.26519872654568,
+      "rmse": 5.448561757511687,
+      "r2": -0.26869761676795867,
+      "fold": 4.0
+    },
+    {
+      "mae": 5.16373250829546,
+      "rmse": 7.246513911808076,
+      "r2": -0.3237077689074863,
+      "fold": 5.0
+    }
+  ],
+  "first_leakage_report": {
+    "train_rows": 19,
+    "valid_rows": 13,
+    "train_groups": 5,
+    "valid_groups": 7,
+    "group_overlap_count": 0,
+    "group_overlap_examples": [],
+    "max_train_time": "1970-01-01 00:29:33.043403446+00:00",
+    "min_valid_time": "1970-01-01 00:29:33.058789958+00:00"
+  },
+  "mean_mae": 4.713268974281084,
+  "std_mae": 0.5179018009901919,
+  "mean_rmse": 5.948192839296969,
+  "std_rmse": 0.8360496000952993,
+  "mean_r2": -0.8120163071818016,
+  "std_r2": 0.5527892286634373
+}
