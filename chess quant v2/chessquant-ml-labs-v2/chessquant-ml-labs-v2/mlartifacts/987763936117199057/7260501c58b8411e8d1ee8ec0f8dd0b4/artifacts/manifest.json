@@ -1,0 +1,57 @@
+{
+  "run_dir": "outputs\\models\\20260328_091051_peak_binary_xgb",
+  "model_path": "outputs\\models\\20260328_091051_peak_binary_xgb\\model.joblib",
+  "features_path": "data/features/Matumnich_features_research.parquet",
+  "oof_predictions_path": "outputs\\models\\20260328_091051_peak_binary_xgb\\oof_predictions.parquet",
+  "feature_order": [
+    "created_at_ms",
+    "last_move_at_ms",
+    "my_acpl",
+    "my_blunder_count",
+    "my_mistake_count",
+    "my_inaccuracy_count",
+    "largest_eval_drop_cp",
+    "avg_eval_drop_cp",
+    "eval_volatility",
+    "threw_winning_position",
+    "rating_diff",
+    "result",
+    "my_avg_secs_per_move",
+    "time_gap_ms",
+    "session_id",
+    "games_played",
+    "session_pl",
+    "first_speed",
+    "is_loss",
+    "speed_vs_start",
+    "prev_game_end_ms",
+    "break_time_sec",
+    "loss_streak",
+    "roll_5_acpl_mean",
+    "roll_5_time_per_move",
+    "log_break_time",
+    "tod_morning",
+    "tod_midday",
+    "tod_evening",
+    "tod_night",
+    "session_max",
+    "is_max",
+    "first_max_game",
+    "target"
+  ],
+  "task_type": "classification",
+  "target_col": "target__peak_binary",
+  "objective": {
+    "kind": "peak_binary"
+  },
+  "schema": {
+    "group_col": "session_id",
+    "order_col": "games_played",
+    "cum_pl_col": "session_pl",
+    "time_col": "created_at",
+    "keep_numeric_only": true,
+    "drop_cols": [
+      "game_id"
+    ]
+  }
+}

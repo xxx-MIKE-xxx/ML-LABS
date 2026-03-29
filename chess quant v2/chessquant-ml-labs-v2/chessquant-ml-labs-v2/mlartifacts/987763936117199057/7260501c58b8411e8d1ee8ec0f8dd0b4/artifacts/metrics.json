@@ -1,0 +1,93 @@
+{
+  "experiment_name": "peak_binary_xgb",
+  "task_type": "classification",
+  "objective_kind": "peak_binary",
+  "target_col": "target__peak_binary",
+  "n_rows": 200,
+  "n_features": 34,
+  "n_oof_rows": 179,
+  "feature_cols": [
+    "created_at_ms",
+    "last_move_at_ms",
+    "my_acpl",
+    "my_blunder_count",
+    "my_mistake_count",
+    "my_inaccuracy_count",
+    "largest_eval_drop_cp",
+    "avg_eval_drop_cp",
+    "eval_volatility",
+    "threw_winning_position",
+    "rating_diff",
+    "result",
+    "my_avg_secs_per_move",
+    "time_gap_ms",
+    "session_id",
+    "games_played",
+    "session_pl",
+    "first_speed",
+    "is_loss",
+    "speed_vs_start",
+    "prev_game_end_ms",
+    "break_time_sec",
+    "loss_streak",
+    "roll_5_acpl_mean",
+    "roll_5_time_per_move",
+    "log_break_time",
+    "tod_morning",
+    "tod_midday",
+    "tod_evening",
+    "tod_night",
+    "session_max",
+    "is_max",
+    "first_max_game",
+    "target"
+  ],
+  "fold_metrics": [
+    {
+      "f1": 0.9333333333333333,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fold": 1.0
+    },
+    {
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fold": 2.0
+    },
+    {
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fold": 3.0
+    },
+    {
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fold": 4.0
+    },
+    {
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fold": 5.0
+    }
+  ],
+  "first_leakage_report": {
+    "train_rows": 21,
+    "valid_rows": 13,
+    "train_groups": 6,
+    "valid_groups": 7,
+    "group_overlap_count": 0,
+    "group_overlap_examples": [],
+    "max_train_time": "2026-03-09 11:20:55.109000+00:00",
+    "min_valid_time": "2026-03-09 12:19:49.958000+00:00"
+  },
+  "mean_f1": 0.9866666666666667,
+  "std_f1": 0.02666666666666666,
+  "mean_roc_auc": 1.0,
+  "std_roc_auc": 0.0,
+  "mean_pr_auc": 1.0,
+  "std_pr_auc": 0.0
+}

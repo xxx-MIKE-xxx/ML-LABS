@@ -1,9 +1,9 @@
-experiment_name: peak_binary_xgb
+﻿experiment_name: peak_binary_xgb
 mlflow:
   tracking_uri: http://127.0.0.1:5000
   experiment_name: chessquant-lab
 paths:
-  features_parquet: data/processed/train_features.parquet
+  features_parquet: data/features/Matumnich_features_research.parquet
   output_root: outputs/models
 schema:
   group_col: session_id
@@ -13,6 +13,11 @@ schema:
   keep_numeric_only: true
   drop_cols:
     - game_id
+    - session_id
+    - session_max
+    - is_max
+    - first_max_game
+    - target
 objective:
   kind: peak_binary
 model:
@@ -32,3 +37,4 @@ split:
   group_gap: 0
 tracking:
   register_latest_symlink: true
+

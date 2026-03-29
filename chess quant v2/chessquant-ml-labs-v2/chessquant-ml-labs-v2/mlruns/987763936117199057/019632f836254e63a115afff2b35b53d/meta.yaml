@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/987763936117199057/019632f836254e63a115afff2b35b53d/artifacts
+end_time: 1774688933510
+entry_point_name: ''
+experiment_id: '987763936117199057'
+lifecycle_stage: active
+run_id: 019632f836254e63a115afff2b35b53d
+run_name: peak_binary_xgb
+run_uuid: 019632f836254e63a115afff2b35b53d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774688933376
+status: 4
+tags: []
+user_id: User

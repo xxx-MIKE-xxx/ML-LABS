@@ -1,0 +1,30 @@
+{
+  "policy": "balanced",
+  "objective_kind": "peak_binary",
+  "threshold_name": "peak_stop_threshold",
+  "score_source": "oof_validation",
+  "optimized_metric": "total_elo_delta_vs_actual",
+  "default_threshold": 0.6,
+  "best_threshold": 0.525,
+  "best_metric_value": 4.0,
+  "best_row": {
+    "policy": "balanced",
+    "objective_kind": "peak_binary",
+    "threshold_name": "peak_stop_threshold",
+    "threshold_value": 0.525,
+    "n_sessions": 35,
+    "n_stop_sessions": 23,
+    "total_actual_final_pl": 65.0,
+    "total_stop_pl": 69.0,
+    "total_peak_pl": 293.0,
+    "total_elo_delta_vs_actual": 4.0,
+    "total_elo_left_vs_peak": 224.0,
+    "mean_realized_pl": 1.9714285714285715,
+    "mean_actual_final_pl": 1.8571428571428572,
+    "mean_peak_pl": 8.371428571428572,
+    "mean_capture_ratio": 1.1848330836679435,
+    "mean_stop_game_index": 2.742857142857143
+  },
+  "csv_path": "C:\\Users\\User\\Desktop\\ML LABS\\chess quant v2\\chessquant_ml_research_sandbox_v2\\chessquant_ml_research_sandbox_v2\\outputs\\models\\20260328_092344_peak_binary_xgb\\threshold_sweep_balanced\\threshold_sweep.csv",
+  "plot_path": "C:\\Users\\User\\Desktop\\ML LABS\\chess quant v2\\chessquant_ml_research_sandbox_v2\\chessquant_ml_research_sandbox_v2\\outputs\\models\\20260328_092344_peak_binary_xgb\\threshold_sweep_balanced\\threshold_sweep.png"
+}

@@ -3,3 +3,6 @@ lambda: 2.0
 continue_threshold: 0.0
 friction_cost: 3.0
 classification_continue_threshold: 0.60
+peak_stop_threshold: 0.50
+future_drawdown_stop_threshold: 5.0
+games_to_peak_continue_threshold: 0.0

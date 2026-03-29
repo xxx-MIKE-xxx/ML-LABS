@@ -1,7 +1,0 @@
-dataset_name: incremental_default
-session_gap_minutes: 60
-fetch_overlap_minutes: 180
-force_reenrich: false
-rebuild_all_features: false
-feature_version: bootstrap_v1
-engine_version: unknown
