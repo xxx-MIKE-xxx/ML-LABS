@@ -1,0 +1,30 @@
+# Environments & Secrets
+.env
+.venv/
+env/
+
+# Binaries
+*.exe
+
+# Data & Output Folders (No asterisks needed)
+data/raw/
+data/cache/
+data/features/
+data/enriched/
+data/registry/
+outputs/
+mlruns/
+mlartifacts/
+
+# File types
+*.parquet
+*.parquet.part
+*.part
+*.csv
+*.joblib
+*.onnx
+*.json
+
+# Python Cache
+__pycache__/
+*.pyc
