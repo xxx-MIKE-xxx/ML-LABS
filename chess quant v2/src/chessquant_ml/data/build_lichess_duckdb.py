@@ -190,11 +190,55 @@ def create_catalog_table(
     catalog_table_name: str,
 ) -> None:
     con.execute(f"DROP TABLE IF EXISTS {quote_ident(catalog_table_name)}")
-    select_sql = build_catalog_select(existing, raw_view_name)
+
     con.execute(
         f"""
         CREATE TABLE {quote_ident(catalog_table_name)} AS
-        {select_sql}
+        SELECT
+            md5(
+                coalesce(filename, '') || '|' ||
+                coalesce(Event, '') || '|' ||
+                coalesce(Site, '') || '|' ||
+                coalesce(White, '') || '|' ||
+                coalesce(Black, '') || '|' ||
+                coalesce(CAST(UTCDate AS VARCHAR), '') || '|' ||
+                coalesce(CAST(UTCTime AS VARCHAR), '') || '|' ||
+                coalesce(movetext, '')
+            ) AS game_id,
+
+            White AS white_player,
+            Black AS black_player,
+            CAST(WhiteElo AS DOUBLE) AS white_elo,
+            CAST(BlackElo AS DOUBLE) AS black_elo,
+
+            Result AS result,
+
+            CASE
+                WHEN Result = '1-0' THEN 'white'
+                WHEN Result = '0-1' THEN 'black'
+                ELSE 'draw_or_other'
+            END AS winner,
+
+            UTCDate AS utc_date,
+            CAST(UTCTime AS VARCHAR) AS utc_time_text,
+
+            TRY_CAST(
+                CAST(UTCDate AS VARCHAR) || ' ' || CAST(UTCTime AS VARCHAR)
+                AS TIMESTAMP WITH TIME ZONE
+            ) AS game_ts_tz,
+
+            TRY_CAST(
+                CAST(UTCDate AS VARCHAR) || ' ' || split_part(CAST(UTCTime AS VARCHAR), '+', 1)
+                AS TIMESTAMP
+            ) AS game_ts,
+
+            ECO AS eco,
+            Opening AS opening,
+            Termination AS victory_status,
+            TimeControl AS time_control,
+            movetext AS moves,
+            filename AS source_file
+        FROM {quote_ident(raw_view_name)}
         """
     )
 
@@ -213,25 +257,6 @@ def create_player_view(
         )
         return
 
-    optional_cols = [
-        "utc_date",
-        "speed",
-        "rated",
-        "white_elo",
-        "black_elo",
-        "winner",
-        "victory_status",
-        "opening",
-        "source_file",
-    ]
-    select_optional = [
-        quote_ident(c) for c in optional_cols if c in catalog_columns
-    ]
-    optional_sql = ",\n        ".join(select_optional)
-
-    if optional_sql:
-        optional_sql = ",\n        " + optional_sql
-
     con.execute(f"DROP VIEW IF EXISTS {quote_ident(player_view_name)}")
     con.execute(
         f"""
@@ -239,8 +264,19 @@ def create_player_view(
         SELECT
             game_id,
             white_player AS player_name,
-            'white' AS side
-            {optional_sql}
+            'white' AS side,
+            white_elo AS player_elo,
+            black_elo AS opponent_elo,
+            result,
+            winner,
+            utc_date,
+            utc_time_text,
+            game_ts,
+            opening,
+            eco,
+            victory_status,
+            time_control,
+            source_file
         FROM {quote_ident(catalog_table_name)}
         WHERE white_player IS NOT NULL
 
@@ -249,8 +285,19 @@ def create_player_view(
         SELECT
             game_id,
             black_player AS player_name,
-            'black' AS side
-            {optional_sql}
+            'black' AS side,
+            black_elo AS player_elo,
+            white_elo AS opponent_elo,
+            result,
+            winner,
+            utc_date,
+            utc_time_text,
+            game_ts,
+            opening,
+            eco,
+            victory_status,
+            time_control,
+            source_file
         FROM {quote_ident(catalog_table_name)}
         WHERE black_player IS NOT NULL
         """
